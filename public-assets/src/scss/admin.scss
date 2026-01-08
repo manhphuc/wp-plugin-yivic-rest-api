@@ -1,0 +1,240 @@
+$primary-color: #7D8DA6;
+$secondary-color: #f0f6fc;
+$hover-color: #eef2f6;
+$white-color: #fff;
+$active-color: green;
+$inactive-color: orange;
+$not-installed-color: red;
+$install-button-color: #007bff;
+$activate-button-color: #28a745;
+$deactivate-button-color: #dc3545;
+$filter-color: #50575e;
+$spinner-size: 80px;
+$spinner-dot-size: 7.2px;
+$spinner-animation-duration: 1.2s;
+$notice-bg-color: #faf8e6;
+
+.notice.yivic-rest-api-notice {
+	background-color: $notice-bg-color;
+	display: flex;
+	align-items: center;
+
+	.notice-content {
+		margin: 22px 0 23px;
+
+		h3 {
+			margin: 0 0 10px;
+		}
+
+		p {
+			padding: 0 0 3px;
+			margin: 0;
+		}
+	}
+
+	span.warning-icon {
+		position: relative;
+		display: block;
+		width: 70px;
+		height: 70px;
+		border-radius: 100%;
+		margin: 20px 17px 20px 5px;
+		flex-shrink: 0;
+
+		img {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			padding: 12px;
+			box-sizing: border-box;
+			max-width: 100%;
+		}
+	}
+}
+
+.yivic-plugins-installer {
+	&__tabs {
+		margin-bottom: 1.5rem;
+
+		li {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			white-space: nowrap;
+
+			a {
+				line-height: 2;
+				padding: .2em;
+				text-decoration: none;
+
+				.count {
+					color: $filter-color;
+					font-weight: 400;
+				}
+			}
+
+			a.current {
+				color: #000;
+				font-weight: 600;
+				border: none;
+			}
+		}
+	}
+
+	&__title,
+	>h2:first-child {
+		font-size: 1.5rem;
+		font-weight: normal;
+	}
+
+	&__table {
+		width: 100%;
+		border-collapse: collapse;
+		background: $white-color;
+		border-radius: 4px;
+		overflow: hidden;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+		th:nth-child(1),
+		td:nth-child(1) {
+			width: 50%; // 2 parts
+		}
+
+		th:nth-child(2),
+		td:nth-child(2),
+		th:nth-child(3),
+		td:nth-child(3) {
+			width: 25%; // 1 part each
+		}
+	}
+
+	&__table thead {
+		background: $primary-color;
+		color: $white-color;
+	}
+
+	&__table th {
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 14px;
+	}
+
+	&__table th,
+	&__table td {
+		padding: 12px;
+		text-align: left;
+		font-size: 13px;
+	}
+
+	&__table tbody tr:nth-child(odd) {
+		background: $secondary-color;
+	}
+
+	&__table tbody tr:hover {
+		background: $hover-color;
+	}
+
+	&__status {
+		font-weight: bold;
+
+		&--active {
+			color: $active-color;
+		}
+
+		&--inactive {
+			color: $inactive-color;
+		}
+
+		&--not-installed {
+			color: $not-installed-color;
+		}
+	}
+
+	&__button {
+		padding: 6px 12px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 14px;
+		color: $white-color;
+
+		&--install {
+			background: $install-button-color;
+		}
+
+		&--activate {
+			background: $activate-button-color;
+		}
+
+		&--deactivate {
+			background: $deactivate-button-color;
+		}
+	}
+}
+
+#plugin-action-spinner {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	column-gap: 1.5rem;
+	color: $white-color;
+	font-size: 20px;
+}
+
+.lds-roller {
+	display: inline-block;
+	position: relative;
+	width: $spinner-size;
+	height: $spinner-size;
+
+	div {
+		animation: lds-roller $spinner-animation-duration cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		transform-origin: calc(#{$spinner-size} / 2) calc(#{$spinner-size} / 2);
+
+		&:after {
+			content: " ";
+			display: block;
+			position: absolute;
+			width: #{$spinner-dot-size};
+			height: #{$spinner-dot-size};
+			border-radius: 50%;
+			background: $white-color;
+			margin: calc(-1 * #{$spinner-dot-size} / 2) 0 0 calc(-1 * #{$spinner-dot-size} / 2);
+		}
+	}
+
+	@for $i from 1 through 8 {
+		div:nth-child(#{$i}) {
+			animation-delay: -#{$i * 0.036}s;
+
+			&:after {
+				top: #{40px + 22.62742 * cos($i * 45deg)};
+				left: #{40px + 22.62742 * sin($i * 45deg)};
+			}
+		}
+	}
+}
+
+@keyframes lds-roller {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

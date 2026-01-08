@@ -1,0 +1,66 @@
+{
+  "name": "yivic-rest-api",
+  "version": "0.0.1",
+  "description": "Webpack build system for the Yivic Rest API WordPress theme (Laravel-style structure)",
+  "author": "Phuc Nguyen <manhphucofficial@yahoo.com>",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "yivic",
+    "webpack",
+    "scss",
+    "es6",
+    "laravel-style"
+  ],
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "phpunit": "php -d xdebug.max_nesting_level=512 ./vendor/bin/phpunit",
+    "phpunit:coverage": "php -d xdebug.max_nesting_level=512 -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-text -vvv",
+    "phpunit:coverage-html": "php -d xdebug.max_nesting_level=512 -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-html",
+    "phpunit:coverage-single": "php -d xdebug.max_nesting_level=512 -d xdebug.mode=coverage --no-configuration --colors --bootstrap=tests/bootstrap-unit.php ./vendor/bin/phpunit"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Firefox ESR",
+    "not dead",
+    "> 0.2%",
+    "maintained node versions"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@fancyapps/ui": "^5.0.36",
+
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
+
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.10.0",
+    "source-map-loader": "^5.0.0",
+
+    "sass": "^1.77.0",
+    "sass-loader": "^14.2.1",
+    "resolve-url-loader": "^5.0.0",
+
+    "mini-css-extract-plugin": "^2.9.0",
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+
+    "file-loader": "^6.2.0",
+
+    "dotenv": "^16.4.5",
+    "dotenv-webpack": "^8.1.0",
+
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-build-notifier": "^2.3.0",
+
+    "typescript": "^5.4.5",
+    "ts-loader": "^9.5.1",
+
+    "i": "^0.3.7"
+  }
+}
