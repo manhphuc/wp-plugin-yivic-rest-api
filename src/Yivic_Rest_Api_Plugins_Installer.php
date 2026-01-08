@@ -62,7 +62,7 @@ class Yivic_Rest_Api_Plugins_Installer {
 			],
 			'yivic-html-components' => [
 				'name'      => 'Yivic HTML Components',
-				'zip_url'   => 'https://yivic-com-demo.dev-srv.net/wp-content/uploads/2026/01/yivic-html-components-0.0.1.zip',
+				'zip_url'   => 'https://yivic-com-demo.dev-srv.org/wp-content/uploads/2026/01/yivic-html-components-0.0.1.zip',
 				'type'      => 'plugins',
 				'folder'    => 'yivic-html-components',
 				'main_file' => 'yivic-html-components',
