@@ -1,0 +1,100 @@
+{
+  "name": "yivic/yivic-rest-api",
+  "type": "wordpress-plugin",
+  "description": "Yivic REST API - This WordPress plugin provides a secure and efficient way to handle REST API authentication and user access control",
+  "version": "0.0.1",
+  "time": "2025-01-08 20:25:04",
+  "homepage": "https://yivic.com/wp-plugin-yivic-rest-api",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Phuc Nguyen",
+      "email": "manhphucofficial@yahoo.com",
+      "homepage": "https://yivic.com/members/phuc-nguyen",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "autoload": {
+    "files": [
+      "./yivic-rest-api-bootstrap.php"
+    ],
+    "psr-4": {
+      "Yivic_Rest_Api\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "files": [
+    ],
+    "psr-4": {
+      "Yivic_Rest_Api\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "8.1.0"
+    },
+    "platform-check": false,
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "mcaskill/composer-exclude-files": true
+    },
+    "vendor-dir": "./vendor",
+    "sort-packages": true
+  },
+  "extra": {
+    "installer-paths": {
+      "dev-docker/wordpress/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "dev-docker/wordpress/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "dev-docker/wordpress/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ]
+    },
+    "mozart": {
+      "dep_namespace": "Yivic_Rest_Api\\Deps\\",
+      "dep_directory": "/src-deps/",
+      "classmap_directory": "/classes/deps/",
+      "classmap_prefix": "Yivic_Rest_Api",
+      "packages": [
+      ],
+      "excluded_packages": [],
+      "override_autoload": [],
+      "delete_vendor_directories": false
+    }
+  },
+  "scripts": {
+    "phpcs": [
+      "./vendor/bin/phpcs"
+    ],
+    "phpstan": [
+      "./vendor/bin/phpstan"
+    ],
+    "phpunit": [
+      "./vendor/bin/phpunit"
+    ],
+    "test": [
+      "@phpcs",
+      "@phpstan",
+      "@phpunit"
+    ]
+  }
+}
